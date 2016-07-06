@@ -163,7 +163,7 @@ class Package():
 	def List(filters):
 		# TODO - Query json v2 endpoint - https://control.ctl.io/api/tunnel/v2/packages/$alias
 		r = bpformation.web.CallScrape("GET","/Blueprints/packages/Library").text
-		table = re.search('id="PackageLibrary">.*?<table class="table">.*?<tbody>(.*)</tbody>',r,re.DOTALL).group(1)
+		table = re.search('id="PackageLibrary".*?>.*?<table class="table">.*?<tbody>(.*)</tbody>',r,re.DOTALL).group(1)
 
 		packages = []
 		for package_html in filter(lambda x: x in Package.limited_printable_chars, table).split("</tr>"):
